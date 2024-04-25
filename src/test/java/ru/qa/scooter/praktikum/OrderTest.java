@@ -1,25 +1,12 @@
-package ru_qa_scooter_praktikum;
+package ru.qa.scooter.praktikum;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import ru_qa_scooter_praktikum.page.MainPage;
-import ru_qa_scooter_praktikum.page.OrderPage;
-import ru_qa_scooter_praktikum.page.RentPage;
+import ru.qa.scooter.praktikum.page.MainPage;
+import ru.qa.scooter.praktikum.page.OrderPage;
+import ru.qa.scooter.praktikum.page.RentPage;
 
 
-
-public class OrderTest {
-    private WebDriver webDriver;
-    @Before
-    public void setup (){
-        webDriver=new ChromeDriver();
-        webDriver.get("https://qa-scooter.praktikum-services.ru/");
-
-    }
-
+public class OrderTest extends BaseTest {
     @Test // кнопка Заказать в верхнем блоке
     public void createOrderHead() {
         MainPage mainPage = new MainPage(webDriver); //
@@ -37,6 +24,7 @@ public class OrderTest {
         rentPage.viewOrderStatus(); // к оне Заказ оформлен нажали Посмотреть статус
 
     }
+
     @Test // кнопка Заказать в нижнем блоке
     public void createOrderFooter() {
         MainPage mainPage = new MainPage(webDriver); //
@@ -54,11 +42,5 @@ public class OrderTest {
         rentPage.arrangeYes(); //в окне Хотите оформить заказ нажали Да
         rentPage.viewOrderStatus(); // в окне Заказ оформлен нажали Посмотреть статус
 
-    }
-
-    @After
-    public void tearDown(){
-
-        webDriver.quit();
     }
 }
